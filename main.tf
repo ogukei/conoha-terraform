@@ -34,7 +34,10 @@ resource "openstack_compute_instance_v2" "instance" {
   name = var.instance_name
   flavor_id = var.flavor_id
   key_pair = openstack_compute_keypair_v2.keypair.id
-  security_groups = [openstack_networking_secgroup_v2.secgroup.name]
+
+  # ポート範囲を指定してセキュリティグループを作成できないため既存のものを指定する
+  security_groups = [var.security_group_name]
+
   admin_pass = var.instance_admin_pass
   metadata = {
     instance_name_tag = var.instance_name_tag
@@ -46,19 +49,4 @@ resource "openstack_compute_instance_v2" "instance" {
     boot_index = 0
     destination_type = "volume"
   }
-}
-
-resource "openstack_networking_secgroup_v2" "secgroup" {
-  name = var.security_group_name
-  description = var.security_group_description
-  delete_default_rules = true
-}
-
-resource "openstack_networking_secgroup_rule_v2" "secgroup_rule" {
-  direction = "ingress"
-  ethertype = "IPv4"
-  protocol = "udp"
-  port_range_min = 8211
-  port_range_max = 8211
-  security_group_id = openstack_networking_secgroup_v2.secgroup.id
 }
