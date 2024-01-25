@@ -57,6 +57,9 @@ use this volume as [the doc](https://doc.conoha.jp/api-vps3/api-create_vm-v3/) s
 ```
 
 ---
+
+terraform.tfvars
+
 ```
 user_name = "gnct01234"
 password = ""
