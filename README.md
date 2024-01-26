@@ -65,8 +65,9 @@ user_name = "gnct01234"
 password = ""
 tenant_name = "gnct56789"
 
-keypair_public_key = "ssh-ed25519 AAAAC"
+keypair_public_key = "ssh-ed25519 AAAAC~~~~~"
 instance_admin_pass = "adminpass"
+security_group_name = "<your security_group_name>"
 ```
 
 Note
