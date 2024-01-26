@@ -45,6 +45,4 @@ variable keypair_name {
   default = "terraform_keypair"
 }
 
-variable security_group_name {
-  default = "terraform_security_group"
-}
+variable security_group_name {}
